@@ -1,0 +1,27 @@
+<ion-navbar *navbar>
+    <ion-title>TODO {{ todo.title }}</ion-title>
+</ion-navbar>
+
+<ion-content>
+    <form [ngFormModel]="todoForm" (ngSubmit)="save(todoForm.value)">
+        <ion-item [class.error]="!title.valid && title.touched">
+            <ion-label floating>Title</ion-label>
+            <ion-input type="text" value="" [ngFormControl]="title"></ion-input>
+        </ion-item>
+        <div *ngIf="title.hasError('required') && title.touched"
+            class="error-box">
+                * Title is required!
+        </div>
+        <ion-item [class.error]="!description.valid && description.touched">
+            <ion-label floating>Description</ion-label>
+            <ion-textarea type="text" value="" [ngFormControl]="description"></ion-textarea>
+        </ion-item>
+        <ion-item [class.error]="!done.valid && done.touched">
+            <ion-label>Done</ion-label>
+            <ion-checkbox [ngFormControl]="done"></ion-checkbox>
+        </ion-item>
+        
+        <button full round danger type="reset" (click)="cancel()">Cancel</button>
+        <button full round type="submit" [disabled]="!todoForm.valid">Save</button>
+    </form>
+</ion-content>

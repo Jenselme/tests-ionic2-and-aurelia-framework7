@@ -4,7 +4,7 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="#todo of todos">
+        <ion-item *ngFor="#todo of todos, #index = index" (click)="viewTodo(index)">
             {{ todo.title }}
         </ion-item>
     </ion-list>
