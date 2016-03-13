@@ -4,10 +4,10 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="#todo of todos, #index = index" (click)="viewTodo(index)">
+        <ion-item *ngFor="#todo of todos, #index = index" (click)="viewTodo(index)" [class]="todo.done ? 'done' : ''">
             {{ todo.title }}
         </ion-item>
     </ion-list>
-    
+
     <button full round (click)="addTodo()">Add</button>
 </ion-content>
