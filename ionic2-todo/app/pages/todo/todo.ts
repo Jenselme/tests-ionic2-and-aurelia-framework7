@@ -20,30 +20,35 @@ export class TodoPage {
     private title: AbstractControl;
     private description: AbstractControl;
     private done: AbstractControl;
-    
+
     constructor(private nav: NavController, navParams: NavParams) {
-        this.todo = navParams.data.todo;
+        if (navParams.data.todo) {
+            this.todo = navParams.data.todo;
+        } else {
+            this.todo = new Todo();
+        }
+
         this.index = navParams.data.index;
-        
+
         let group: {[key: string]: Control} = {
             title: new Control(this.todo.title, Validators.compose([Validators.required])),
             description: new Control(this.todo.description),
             done: new Control(this.todo.done),
         };
-        
+
         this.todoForm = new ControlGroup(group);
         this.title = this.todoForm.controls['title'];
         this.description = this.todoForm.controls['description'];
         this.done = this.todoForm.controls['done'];
     }
-    
+
     private save(todoValues) {
         this.nav.push(ListTodosPage, {
             todo: todoValues,
             index: this.index,
         });
     }
-    
+
     private cancel() {
         this.nav.push(ListTodosPage);
     }

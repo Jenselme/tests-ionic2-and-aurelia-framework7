@@ -35,4 +35,8 @@ export class ListTodosPage {
             index: index,
         });
     }
+    
+    private addTodo() {
+        this.nav.push(TodoPage);
+    }
 }
