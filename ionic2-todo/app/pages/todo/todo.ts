@@ -5,7 +5,7 @@ import {
     Validators,
     Control,
 } from 'angular2/common';
-import {Page, NavController, NavParams} from 'ionic-angular';
+import {Page, NavController, NavParams, Storage, SqlStorage} from 'ionic-angular';
 import {Todo} from '../../models';
 import { ListTodosPage } from '../list-todos/list-todos';
 
@@ -20,8 +20,11 @@ export class TodoPage {
     private title: AbstractControl;
     private description: AbstractControl;
     private done: AbstractControl;
+    private storage: Storage;
 
     constructor(private nav: NavController, navParams: NavParams) {
+        this.storage = new Storage(SqlStorage);
+
         if (navParams.data.todo) {
             this.todo = navParams.data.todo;
         } else {
@@ -43,10 +46,21 @@ export class TodoPage {
     }
 
     private save(todoValues) {
-        this.nav.push(ListTodosPage, {
-            todo: todoValues,
-            index: this.index,
-        });
+        if (this.todo.id === undefined) {
+            this.storage.query(
+                'INSERT INTO todos (title, description, done) VALUES (?, ?, ?);',
+                [todoValues.title, todoValues.description, todoValues.done]
+            )
+                .then(() => this.nav.push(ListTodosPage))
+                .catch(err => console.log(err));
+        } else {
+            this.storage.query(
+                'UPDATE todos SET title = ?, description = ?, done = ? WHERE id = ?',
+                [todoValues.title, todoValues.description, todoValues.done, this.todo.id]
+            )
+                .then(() => this.nav.push(ListTodosPage))
+                .catch(err => console.log(err));
+        }
     }
 
     private cancel() {

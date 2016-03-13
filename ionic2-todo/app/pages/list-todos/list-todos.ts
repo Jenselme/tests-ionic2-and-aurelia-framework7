@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams} from 'ionic-angular';
+import {Page, NavController, Storage, SqlStorage} from 'ionic-angular';
 import {Todo} from '../../models';
 import { TodoPage } from '../todo/todo';
 
@@ -8,34 +8,28 @@ import { TodoPage } from '../todo/todo';
 })
 export class ListTodosPage {
     private todos: Todo[];
-    
-    constructor(private nav: NavController, navParams: NavParams) {
-        this.todos = [{
-            title: 'Todo 1',
-            description: '',
-            done: false,
-            created: new Date(),
-        }, {
-            title: 'Todo 2',
-            description: '',
-            done: false,
-            created: new Date(),
-        }];
-        
-        if (navParams.data) {
-            let index = navParams.data.index;
-            let todo = navParams.data.todo;
-            this.todos[index] = todo;
-        }
+    private storage: Storage;
+
+    constructor(private nav: NavController) {
+        this.storage = new Storage(SqlStorage);
+        this.todos = [];
+        this.storage.query('CREATE TABLE IF NOT EXISTS todos(id integer primary key unique, title VARCHAR(10), description TEXT, done BOOLEAN)')
+            .then(() => this.storage.query('SELECT * FROM todos'))
+            .then(results => {
+                for (let result of results.res.rows) {
+                    this.todos.push(result);
+                }
+            })
+            .catch(err => console.log(err));
     }
-    
+
     private viewTodo(index) {
         this.nav.push(TodoPage, {
             todo: this.todos[index],
             index: index,
         });
     }
-    
+
     private addTodo() {
         this.nav.push(TodoPage);
     }
