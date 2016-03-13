@@ -33,10 +33,12 @@ export class TodoPage {
 
         this.index = navParams.data.index;
 
+        // When retrieved from SQLStorage, done is not a boolean but a string.
+        let done = this.todo.done == true || this.todo.done === 'true';
         let group: {[key: string]: Control} = {
             title: new Control(this.todo.title, Validators.compose([Validators.required])),
             description: new Control(this.todo.description),
-            done: new Control(this.todo.done),
+            done: new Control(done),
         };
 
         this.todoForm = new ControlGroup(group);

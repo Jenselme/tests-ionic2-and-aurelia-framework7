@@ -17,6 +17,7 @@ export class ListTodosPage {
             .then(() => this.storage.query('SELECT * FROM todos'))
             .then(results => {
                 for (let result of results.res.rows) {
+                    console.log(result)
                     this.todos.push(result);
                 }
             })
@@ -32,5 +33,23 @@ export class ListTodosPage {
 
     private addTodo() {
         this.nav.push(TodoPage);
+    }
+
+    private markTodoDone(todo) {
+        let done;
+        if (todo.done == true || todo.done === 'true') {
+            done = 'false';
+        } else {
+            done = 'true';
+        }
+
+        this.storage.query('UPDATE todos SET done = ?', [done])
+            .then(() => todo.done = done)
+            .catch(err => console.log(err));
+    }
+
+    private getClass(todo) {
+        // When retrieved from SQLStorage, done is not a boolean but a string.
+        return (todo.done == true || todo.done === 'true') ? 'done clickable' : 'clickable';
     }
 }

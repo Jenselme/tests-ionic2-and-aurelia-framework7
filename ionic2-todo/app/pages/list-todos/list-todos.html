@@ -4,8 +4,9 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="#todo of todos, #index = index" (click)="viewTodo(index)" [class]="todo.done ? 'done' : ''">
-            {{ todo.title }}
+        <ion-item *ngFor="#todo of todos, #index = index">
+            <ion-label [class]="getClass(todo)" (click)="viewTodo(index)">{{ todo.title }}</ion-label>
+            <button item-right (click)="markTodoDone(todo)">Toggle done</button>
         </ion-item>
     </ion-list>
 
