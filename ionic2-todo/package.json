@@ -21,5 +21,16 @@
     "webpack": "1.12.14"
   },
   "name": "ionic2-todo",
-  "description": "ionic2-todo: An Ionic project"
+  "description": "ionic2-todo: An Ionic project",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
+  ],
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

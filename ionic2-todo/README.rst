@@ -19,3 +19,10 @@ Run in browser
 - Launch ``ionic serve`` to serve the application in a browser. It supports live
   reload. To rebuild the files when they are modified, launch in another
   terminal ``gulp watch``.
+
+
+Run in emulator
+===============
+
+- Launch ``ionic run android``
+- Build for phone: ``ionic build android``
