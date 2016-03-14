@@ -8,7 +8,13 @@ export class App {
                 moduleId: 'pages/list-todos/list-todos',
                 nav: true,
                 title: 'todos'
-            },
+            }, {
+                route: ['todo'],
+                name: 'todo',
+                moduleId: 'pages/todo/todo',
+                nav: true,
+                title: 'View Todo',
+            }
         ]);
 
         this.router = router;

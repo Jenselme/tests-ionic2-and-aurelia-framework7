@@ -3,7 +3,7 @@
 
     <div class="list-block">
         <ul>
-            <li class="item-content" repeat.for="todo of todos">
+            <li class="item-content" repeat.for="todo of todos" click.delegate="viewTodo(todo)">
                 <div class="item-inner">
                     ${todo.title}
                 </div>

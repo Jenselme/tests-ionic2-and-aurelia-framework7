@@ -1,0 +1,45 @@
+<template>
+    <p>H</p>
+
+    <div class="list-block">
+        <ul>
+            <li>
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title label">Title</div>
+                        <div class="item-input">
+                            <input type="text" placeholder="Title" value.bind="todo.title" required>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="align-top">
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title label">Description</div>
+                        <div class="item-input">
+                            <textarea value.bind="todo.description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-inner">
+                        <div class="item-title label">Done</div>
+                        <div class="item-input">
+                            <label class="label-switch">
+                                <input type="checkbox" value.bind="todo.done">
+                                <div class="checkbox"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content-block">
+        <p><a class="button button-round button-fill" href="#" click.delegate="saveTodo()">Save</a></p>
+</div>
+</template>
