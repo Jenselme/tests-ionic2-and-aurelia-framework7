@@ -15,4 +15,8 @@ export class TodoPage {
     saveTodo() {
         this.router.navigateToRoute('todos');
     }
+
+    cancel() {
+        this.router.navigateToRoute('todos');
+    }
 }

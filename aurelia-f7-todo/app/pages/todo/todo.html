@@ -38,6 +38,9 @@
     </div>
 
     <div class="content-block">
-        <p><a class="button button-round button-fill" href="#" click.delegate="saveTodo()">Save</a></p>
+        <div class="row">
+            <div class="col-50"><a href="#" class="button button-big button-fill color-red" click.delegate="cancel()">Cancel</a></div>
+            <div class="col-50"><a href="#" class="button button-big button-fill color-green" click.delegate="saveTodo()">Save</a></div>
+        </div>
     </div>
 </template>
