@@ -1,15 +1,13 @@
-import {F7} from '../../f7';
 import { Storage } from '../../services/storage';
 import {inject} from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 
 
-@inject(F7, Router, Storage)
+@inject(Router, Storage)
 export class ListTodosPage {
     heading = 'Welcome to the Aurelia Framework 7 TODO App';
 
-    constructor(f7, router, storage) {
-        this.f7 = f7;
+    constructor(router, storage) {
         this.router = router;
         this.storage = storage;
         this.todos = [];
