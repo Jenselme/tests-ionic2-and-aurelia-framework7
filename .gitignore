@@ -3,6 +3,7 @@
 
 node_modules/
 ionic2-todo/www/build/
+aurelia-f7-todo/www/
 platforms/
 plugins/
 typings

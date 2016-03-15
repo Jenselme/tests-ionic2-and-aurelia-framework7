@@ -14,17 +14,13 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name]' + outputFileTemplateSuffix + '.js',
-    chunkFilename: '[id]' + outputFileTemplateSuffix + '.js'
+    path: path.join(__dirname, 'www/'),
+    filename: 'bundle.js',
   },
   plugins: [
-    new AureliaWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Aurelia webpack skeleton - ' + pkg.version,
-      template: 'index.prod.html',
-      filename: 'index.html'
-    })
+    new AureliaWebpackPlugin({
+        src: path.resolve('./app/'),
+    }),
   ],
   resolve: {
     root: [
