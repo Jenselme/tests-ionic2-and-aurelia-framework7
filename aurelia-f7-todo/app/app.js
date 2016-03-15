@@ -9,7 +9,7 @@ export class App {
                 nav: true,
                 title: 'todos'
             }, {
-                route: ['todo'],
+                route: ['todo', 'todo/:id'],
                 name: 'todo',
                 moduleId: 'pages/todo/todo',
                 nav: true,

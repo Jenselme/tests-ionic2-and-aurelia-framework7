@@ -1,19 +1,26 @@
 import {inject} from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { Storage } from '../../services/storage';
 
 
-@inject(Router)
+@inject(Router, Storage)
 export class TodoPage {
-    constructor(router) {
+    constructor(router, storage) {
         this.router = router;
+        this.storage = storage;
     }
 
     activate(params) {
-        this.todo = params.todo;
+        this.todo = {};
+        if (params.id) {
+            this.storage.getTodo(params.id)
+                .then(todo => this.todo = todo);
+        }
     }
 
     saveTodo() {
-        this.router.navigateToRoute('todos');
+        this.storage.saveTodo(this.todo)
+            .then(() => this.router.navigateToRoute('todos'));
     }
 
     cancel() {
