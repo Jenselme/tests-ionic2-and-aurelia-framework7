@@ -26,4 +26,8 @@ export class TodoPage {
     cancel() {
         this.router.navigateToRoute('todos');
     }
+
+    get canSave() {
+        return this.todo.title !== undefined && this.todo.title.length > 0;
+    }
 }

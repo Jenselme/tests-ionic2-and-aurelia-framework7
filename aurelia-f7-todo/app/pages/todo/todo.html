@@ -40,7 +40,11 @@
     <div class="content-block">
         <div class="row">
             <div class="col-50"><a href="#" class="button button-big button-fill color-red" click.delegate="cancel()">Cancel</a></div>
-            <div class="col-50"><a href="#" class="button button-big button-fill color-green" click.delegate="saveTodo()">Save</a></div>
+            <div class="col-50">
+                <a href="#"
+                   class="button button-big button-fill color-green ${canSave ? '' : 'disabled'}"
+                   click.delegate="saveTodo()">Save</a>
+                </div>
         </div>
     </div>
 </template>
