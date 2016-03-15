@@ -24,5 +24,6 @@ Run in browser
 Run in emulator
 ===============
 
+- Add platform: ``ionic platform add android``
 - Launch ``ionic run android``
 - Build for phone: ``ionic build android``
