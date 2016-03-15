@@ -1,3 +1,7 @@
 .navbar .center {
     margin: auto;
 }
+
+.done {
+    text-decoration: line-through;
+}

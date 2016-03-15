@@ -24,4 +24,14 @@ export class ListTodosPage {
     addTodo() {
         this.router.navigate('/todo');
     }
+
+    toggleDone(todo) {
+        if (todo.done === true || todo.done === 'true') {
+            todo.done = 'false';
+        } else {
+            todo.done = 'true';
+        }
+
+        this.storage.saveTodo(todo);
+    }
 }

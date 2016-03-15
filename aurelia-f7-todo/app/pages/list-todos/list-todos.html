@@ -2,9 +2,10 @@
     <div class="list-block">
         <ul>
             <li class="item-content" repeat.for="todo of todos" click.delegate="viewTodo(todo)">
-                <div class="item-inner">
+                <div class="item-inner ${todo.done === true || todo.done === 'true' ? 'done' : ''}">
                     ${todo.title}
                 </div>
+                <p><a href="#" class="button button-fill" click.delegate="toggleDone(todo)">Toggle Done</a></p>
             </li>
         </ul>
     </div>
