@@ -40,7 +40,7 @@
     "aurelia-templating-router": "^1.0.0-beta.1.1.1",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.5.0",
-    "framework7": "github:nolimits4web/Framework7",
+    "framework7": "^1.4.2",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {

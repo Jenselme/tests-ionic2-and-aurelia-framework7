@@ -3,7 +3,9 @@ import 'framework7';
 
 class F7Handler {
     constructor() {
-        this.f7 = new Framework7();
+        this.f7 = new Framework7({
+            material: true,
+        });
     }
 
     get(target, name) {
