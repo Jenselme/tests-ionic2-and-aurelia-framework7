@@ -25,7 +25,9 @@ export class ListTodosPage {
         this.router.navigate('/todo');
     }
 
-    toggleDone(todo) {
+    toggleDone(todo, event) {
+        event.stopPropagation();
+
         if (todo.done === true || todo.done === 'true') {
             todo.done = 'false';
         } else {
