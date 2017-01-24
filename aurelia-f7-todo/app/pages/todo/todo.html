@@ -3,10 +3,13 @@
         <ul>
             <li>
                 <div class="item-content">
-                    <div class="item-inner">
-                        <div class="item-title label">Title</div>
+                    <div class="item-inner" validation-errors.bind="titleErrors">
+                        <div class="item-title label">
+                            Title
+                            <strong repeat.for="errorInfo of titleErrors">${errorInfo.error.message}</strong>
+                         </div>
                         <div class="item-input">
-                            <input type="text" placeholder="Title" value.bind="todo.title" required>
+                            <input type="text" placeholder="Title" value.bind="todo.title & validate" required>
                         </div>
                     </div>
                 </div>

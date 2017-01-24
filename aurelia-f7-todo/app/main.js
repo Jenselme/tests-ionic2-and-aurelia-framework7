@@ -9,6 +9,7 @@ import '../styles/style.css';
 bootstrap(function (aurelia) {
     aurelia.use
         .standardConfiguration()
+        .plugin('aurelia-validation')
         .developmentLogging();
 
     aurelia.start().then(() => aurelia.setRoot('app', document.body));
