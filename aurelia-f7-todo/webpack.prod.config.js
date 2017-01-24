@@ -29,9 +29,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/, query: {stage: 0} },
-      { test: /\.css?$/, loader: 'style!css' },
-      { test: /\.html$/, loader: 'raw' },
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css?$/, use: [{loader: 'style-loader'}, {loader: 'css-loader'}] },
+      { test: /\.html$/, loader: 'html-loader' },
       { test: /\.(png|gif|jpg)$/, loader: 'url-loader?limit=8192' },
       { test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff2' },
       { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
