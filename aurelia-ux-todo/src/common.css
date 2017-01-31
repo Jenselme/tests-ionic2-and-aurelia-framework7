@@ -1,0 +1,22 @@
+/* From https://github.com/aurelia/app-ux-showcase/blob/master/src/common.css */
+
+styles.main {
+    padding: 40px 40px 40px;
+}
+
+styles.header {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 32px;
+    margin-bottom: 30px;
+    color: ${$design.primary};
+}
+
+styles.description {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    max-width: 940px;
+    color: ${$swatches.black};
+    margin-bottom: 40px;
+}

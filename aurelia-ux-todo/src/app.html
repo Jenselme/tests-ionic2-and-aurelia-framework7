@@ -1,3 +1,35 @@
 <template>
-  <h1>${message}</h1>
+    <require from="./reset.css"></require>
+    <require from="./app.css#ux"></require>
+
+    <nav styles.nav if.bind="showNavigationMenu">
+        <a href="#/home">
+            <img styles.logo src="../assets/aurelia-icon-128x128.png">
+        </a>
+
+        <span styles.product-name>TODO application with Aurelia UX</span>
+
+        <ul styles.nav-list>
+            <template repeat.for="[category, routes] of router.navigation | categories">
+                <li styles.nav-category>
+                    <span>${category.title}</span>
+                </li>
+
+                <li styles.nav-item repeat.for="nav of routes" class="${nav.isActive ? 'active' : ''}">
+                    <a href.bind="nav.href">${nav.title}</a>
+                </li>
+            </template>
+        </ul>
+    </nav>
+
+    <section styles.main>
+        <header styles.header>
+            <h1 styles.header-h1>${router.currentInstruction.config.navModel.title}</h1>
+            <a styles.clickable target="_self" click.delegate="toggleNavigationMenu()">
+                <i styles.header-burger class="fa fa-bars" aria-hidden="true"></i>
+            </a>
+        </header>
+
+        <router-view styles.page></router-view>
+    </section>
 </template>
