@@ -7,5 +7,5 @@ export let routes = [
     { route: '', redirect: 'list' },
     { route: 'list', moduleId: './pages/list', name: 'list', title: 'TODO list' },
 
-    { settings: { category: todoCategory }, route: 'todo', moduleId: './pages/todo', name: 'todo', title: 'Add todo', nav: true },
+    { settings: { category: todoCategory }, route: 'add', moduleId: './pages/add', name: 'add', title: 'Add todo', nav: true },
 ];
