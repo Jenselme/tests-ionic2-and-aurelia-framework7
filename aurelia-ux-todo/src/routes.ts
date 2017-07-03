@@ -4,8 +4,8 @@ let todoCategory = {
 
 
 export let routes = [
-    { route: '', redirect: 'home' },
-    { route: 'home', moduleId: './home', name: 'home', title: 'Home' },
+    { route: '', redirect: 'list' },
+    { route: 'list', moduleId: './pages/list', name: 'list', title: 'TODO list' },
 
     { settings: { category: todoCategory }, route: 'todo', moduleId: './pages/todo', name: 'todo', title: 'Add todo', nav: true },
 ];
