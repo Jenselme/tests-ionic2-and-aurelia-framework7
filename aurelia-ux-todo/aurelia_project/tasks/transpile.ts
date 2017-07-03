@@ -21,9 +21,11 @@ function configureEnvironment() {
 var typescriptCompiler = typescriptCompiler || null;
 
 function buildTypeScript() {
-  typescriptCompiler = ts.createProject('tsconfig.json', {
-    "typescript": require('typescript')
-  });
+  if(!typescriptCompiler) {
+    typescriptCompiler = ts.createProject('tsconfig.json', {
+      "typescript": require('typescript')
+    });
+  }
 
   let dts = gulp.src(project.transpiler.dtsSource);
 

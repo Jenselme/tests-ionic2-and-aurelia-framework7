@@ -1,5 +1,5 @@
 {
-  "name": "aurelia-ux-todo",
+  "name": "app-ux-showcase",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "repository": {
@@ -11,16 +11,16 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aurelia-bootstrapper": "^1.0.0",
     "aurelia-animator-css": "^1.0.0",
-    "aurelia-ux": "^0.1.14",
-    "bluebird": "^3.4.1",
-    "requirejs": "^2.3.2",
-    "text": "github:requirejs/text#latest"
+    "aurelia-bootstrapper": "^1.0.0",
+    "aurelia-fetch-client": "^1.0.0",
+    "aurelia-validation": "^1.0.0-beta.1.0.1",
+    "aurelia-ux": "^0.2.0",
+    "bluebird": "^3.4.1"
   },
   "peerDependencies": {},
   "devDependencies": {
-    "aurelia-cli": "^0.24.0",
+    "aurelia-cli": "^0.21.0",
     "aurelia-testing": "^1.0.0-beta.2.0.0",
     "aurelia-tools": "^0.2.2",
     "browser-sync": "^2.13.0",
@@ -41,8 +41,6 @@
     "tslint": "^3.11.0",
     "typescript": ">=1.9.0-dev || ^2.0.0",
     "typings": "^1.3.0",
-    "gulp-htmlmin": "^3.0.0",
-    "html-minifier": "^3.2.3",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",

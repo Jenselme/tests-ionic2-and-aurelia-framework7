@@ -1,5 +1,5 @@
 {
-  "name": "aurelia-ux-todo",
+  "name": "app-ux-showcase",
   "type": "project:application",
   "platform": {
     "id": "web",
@@ -18,8 +18,8 @@
     "source": "src/**/*.ts"
   },
   "markupProcessor": {
-    "id": "minimum",
-    "displayName": "Minimal Minification",
+    "id": "none",
+    "displayName": "None",
     "fileExtension": ".html",
     "source": "src/**/*.html"
   },
@@ -90,7 +90,7 @@
         "name": "vendor-bundle.js",
         "prepend": [
           "node_modules/bluebird/js/browser/bluebird.core.js",
-          "node_modules/requirejs/require.js"
+          "scripts/require.js"
         ],
         "dependencies": [
           "aurelia-binding",
@@ -114,7 +114,10 @@
           "aurelia-task-queue",
           "aurelia-templating",
           "aurelia-templating-binding",
-          "text",
+          {
+            "name": "text",
+            "path": "../scripts/text"
+          },
           {
             "name": "aurelia-templating-resources",
             "path": "../node_modules/aurelia-templating-resources/dist/amd",
@@ -132,13 +135,15 @@
             "env": "dev"
           },
           {
+            "name": "aurelia-validation",
+            "path": "../node_modules/aurelia-validation/dist/amd",
+            "main": "aurelia-validation"
+          },
+          {
             "name": "aurelia-ux",
             "path": "../node_modules/aurelia-ux/dist/amd",
             "main": "index",
-            "resources": [
-              "./button/ux-button.html",
-              "./button/ux-button-theme.css"
-            ]
+            "resources": ["**/*.{css,html}"]
           }
         ]
       }
