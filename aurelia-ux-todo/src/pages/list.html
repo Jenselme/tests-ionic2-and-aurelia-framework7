@@ -1,6 +1,29 @@
 <template>
-    <require from='./common.css#ux'></require>
+    <require from="../common.css#ux"></require>
 
     <main styles.main>
+        <div
+            styles.todo
+            repeat.for="todo of todos"
+            click.delegate="viewTodo(todo)"
+            class="${todo.done ? 'done' : 'not-done'}"
+        >
+            <h2
+                styles.center
+                class="${todo.done ? 'done' : ''}"
+            >${todo.title}</h2>
+
+            <p>${todo.description}</p>
+
+            <div>
+                <ux-field>
+                    <ux-checkbox checked.bind="todo.done">Done</ux-checkbox>
+                </ux-field>
+            </div>
+        </div>
+
+        <div styles.alignright>
+            <ux-button type="raised" click.delegate="addTodo()">Add</ux-button>
+        </div>
     </main>
 </template>
