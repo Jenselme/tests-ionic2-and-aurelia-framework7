@@ -13,7 +13,7 @@ export class List {
     }
 
     public viewTodo(todo: Todo) {
-        this.router.navigateToRoute('todo', {id: todo.id});
+        this.router.navigateToRoute('edit', {id: todo.id});
     }
 
     public addTodo() {
