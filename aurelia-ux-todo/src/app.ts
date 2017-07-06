@@ -1,16 +1,26 @@
 import { AureliaUX } from 'aurelia-ux';
-import { inject } from 'aurelia-dependency-injection';
+import { autoinject } from 'aurelia-dependency-injection';
 import { routes } from './routes';
 
 
-@inject(AureliaUX)
+const MAIN_THEME = {
+    primary: '#009688',
+    accent: '#4CAF50',
+};
+const ALTERNATE_THEME = {
+    primary: '#4CAF50',
+    accent: '#009688',
+};
+
+@autoinject
 export class App {
     router;
     showNavigationMenu: Boolean;
+    public theme: Boolean;
 
-    constructor(ux) {
-        ux.design.primary = '#009688';
-        ux.design.accent = '#4CAF50';
+    constructor(private ux: AureliaUX) {
+        ux.design.primary = MAIN_THEME.primary;
+        ux.design.accent = MAIN_THEME.accent;
 
         this.showNavigationMenu = false;
     }
@@ -22,6 +32,16 @@ export class App {
 
     toggleNavigationMenu() {
         this.showNavigationMenu = !this.showNavigationMenu;
+    }
+
+    themeChanged() {
+        if (this.theme) {
+            this.ux.design.primary = ALTERNATE_THEME.primary;
+            this.ux.design.accent = ALTERNATE_THEME.accent;
+        } else {
+            this.ux.design.primary = MAIN_THEME.primary;
+            this.ux.design.accent = MAIN_THEME.accent;
+        }
     }
 }
 
