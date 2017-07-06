@@ -20,9 +20,7 @@ export class List {
         this.router.navigate('/add');
     }
 
-    toggleDone(todo: Todo, event: Event) {
-        event.stopPropagation();
-
+    toggleDone(todo: Todo) {
         if (todo.done) {
             todo.done = false;
         } else {

@@ -5,17 +5,16 @@
         <div
             styles.todo
             repeat.for="todo of todos"
-            click.delegate="viewTodo(todo)"
-            class="${todo.done ? 'done' : 'not-done'}"
         >
             <h2
                 styles.center
+                click.delegate="viewTodo(todo)"
                 class="${todo.done ? 'done' : ''}"
             >${todo.title}</h2>
 
             <p>${todo.description}</p>
 
-            <div>
+            <div click.delegate="toggleDone(todo)">
                 <ux-field>
                     <ux-checkbox checked.bind="todo.done">Done</ux-checkbox>
                 </ux-field>
