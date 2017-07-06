@@ -1,46 +1,34 @@
 import { Todo } from '../models/todo';
 
-declare var require: any;
-const localforage: LocalForage = require("localforage");
 
+const TODO_SAVE_KEY = 'todos';
 
 export class Storage {
-    private storage: LocalForage;
+    getTodos(): Todo[] {
+        let todos = localStorage.getItem(TODO_SAVE_KEY);
+        if (todos === null) {
+            return [];
+        }
 
-    constructor() {
-        this.storage = localforage;
-    }
-
-    getTodos(): Promise<Array<Todo>> {
-        return this.storage.getItem<string>('todos')
-            .then(todos => JSON.parse(todos))
-            .then(todos => todos ? todos : []);
+        return JSON.parse(todos);
     }
 
     saveTodo(todo: Todo) {
-        let prepareTodos;
+        let todos;
         if (!todo.id) {
-            prepareTodos = this.getTodos()
-                .then(todos => {
-                    todo.id = todos.length;
-                    todos.push(todo);
-                    return todos;
-                });
+            todos = this.getTodos();
+            todo.id = todos.length;
+            todos.push(todo);
         } else {
-            prepareTodos = this.getTodos()
-                .then(todos => {
-                    let index = todo.id;
-                    todos[index] = todo;
-
-                    return todos;
-                });
+            todos = this.getTodos();
+            let index = todo.id;
+            todos[index] = todo;
         }
 
-        return prepareTodos.then(todos => this.storage.setItem('todos', JSON.stringify(todos)));
+        localStorage.setItem(TODO_SAVE_KEY, JSON.stringify(todos));
     }
 
-    getTodo(id): Promise<Todo> {
-        return this.getTodos()
-            .then(todos => todos[id]);
+    getTodo(id): Todo {
+        return this.getTodos()[id];
     }
 }
