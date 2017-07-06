@@ -15,7 +15,7 @@ export class Storage {
 
     saveTodo(todo: Todo) {
         let todos;
-        if (!todo.id) {
+        if (todo.id === undefined) {
             todos = this.getTodos();
             todo.id = todos.length;
             todos.push(todo);
