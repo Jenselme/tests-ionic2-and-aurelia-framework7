@@ -20,3 +20,11 @@ styles.description {
     color: ${$swatches.black};
     margin-bottom: 40px;
 }
+
+styles.alignright {
+    text-align: right;
+}
+
+button {
+    cursor: pointer;
+}

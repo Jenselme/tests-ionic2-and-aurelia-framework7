@@ -1,3 +1,33 @@
 <template>
-    TODO
+    <require from="../common.css#ux"></require>
+
+    <main styles.main>
+        <ux-form>
+            <div>
+              <ux-input
+                  placeholder="Title"
+                  value.bind="todo.title"
+              ></ux-input>
+            </div>
+
+            <div>
+              <ux-textarea
+                  auto-resize
+                  placeholder="Description"
+                  value.bind="todo.description"
+              ></ux-textarea>
+            </div>
+
+            <div>
+                <ux-field>
+                <ux-checkbox checked.bind="todo.done">Done</ux-checkbox>
+                </ux-field>
+            </div>
+
+            <div styles.alignright>
+                <ux-button type="raised" click.delegate="save()">Save</ux-button>
+                <ux-button type="raised" click.delegate="cancel()">Cancel</ux-button>
+            </div>
+        </ux-form>
+    </main>
 </template>
