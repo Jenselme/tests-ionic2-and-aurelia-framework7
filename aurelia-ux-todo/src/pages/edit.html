@@ -26,7 +26,7 @@
             </div>
 
             <div styles.alignright>
-                <ux-button type="raised" click.delegate="save()">Save</ux-button>
+                <ux-button type="raised" click.delegate="save()" disabled.bind="!canSave">Save</ux-button>
                 <ux-button type="raised" click.delegate="cancel()">Cancel</ux-button>
             </div>
         </ux-form>

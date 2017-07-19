@@ -1,6 +1,7 @@
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import {
+    Validator,
     ValidationController,
     ValidationControllerFactory,
     ValidationRules,
@@ -14,11 +15,18 @@ import { Storage } from '../services/storage';
 @autoinject
 export class Add {
     public todo: Todo;
+    public canSave: Boolean;
     private controller: ValidationController;
 
-    constructor(private router: Router, private storage: Storage, controllerFactory: ValidationControllerFactory) {
-        this.controller = controllerFactory.createForCurrentScope();
+    constructor(private router: Router, private storage: Storage, private validator: Validator, controllerFactory: ValidationControllerFactory) {
+        this.controller = controllerFactory.createForCurrentScope(validator);
         this.controller.validateTrigger = validateTrigger.changeOrBlur;
+        this.controller.subscribe(event => this.validateWhole());
+    }
+
+    private validateWhole() {
+        this.validator.validateObject(this.todo)
+            .then(results => this.canSave = results.every(result => result.valid));
     }
 
     public activate(params) {
