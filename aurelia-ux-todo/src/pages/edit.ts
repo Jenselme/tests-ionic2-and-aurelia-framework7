@@ -1,5 +1,11 @@
 import { autoinject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import {
+    ValidationController,
+    ValidationControllerFactory,
+    ValidationRules,
+    validateTrigger,
+} from 'aurelia-validation';
 
 import { Todo } from '../models/todo';
 import { Storage } from '../services/storage';
@@ -8,8 +14,11 @@ import { Storage } from '../services/storage';
 @autoinject
 export class Add {
     public todo: Todo;
+    private controller: ValidationController;
 
-    constructor(private router: Router, private storage: Storage) {
+    constructor(private router: Router, private storage: Storage, controllerFactory: ValidationControllerFactory) {
+        this.controller = controllerFactory.createForCurrentScope();
+        this.controller.validateTrigger = validateTrigger.changeOrBlur;
     }
 
     public activate(params) {
@@ -18,6 +27,14 @@ export class Add {
         } else {
             this.todo = new Todo();
         }
+
+        this.setupValidation();
+    }
+
+    public setupValidation() {
+        ValidationRules
+            .ensure('title').required().minLength(3).withMessage('Title must at least be 3 chars long.')
+            .on(this.todo);
     }
 
     public save() {

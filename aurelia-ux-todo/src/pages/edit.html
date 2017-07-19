@@ -3,10 +3,11 @@
 
     <main styles.main>
         <ux-form>
-            <div>
+            <div validation-errors.bind="titleErrors">
+              <strong repeat.for="errorInfo of titleErrors">${errorInfo.error.message}</strong>
               <ux-input
                   placeholder="Title"
-                  value.bind="todo.title"
+                  value.bind="todo.title & validate"
               ></ux-input>
             </div>
 
