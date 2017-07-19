@@ -42,6 +42,7 @@ export class Add {
     public setupValidation() {
         ValidationRules
             .ensure('title').required().minLength(3).withMessage('Title must at least be 3 chars long.')
+            .ensure('description').required().minLength(3).withMessage('Description must at least be 3 chars long.')
             .on(this.todo);
     }
 

@@ -11,11 +11,12 @@
               ></ux-input>
             </div>
 
-            <div>
+            <div validation-errors.bind="descriptionErrors">
+              <strong repeat.for="errorInfo of descriptionErrors">${errorInfo.error.message}</strong>
               <ux-textarea
                   auto-resize
                   placeholder="Description"
-                  value.bind="todo.description"
+                  value.bind="todo.description & validate"
               ></ux-textarea>
             </div>
 
