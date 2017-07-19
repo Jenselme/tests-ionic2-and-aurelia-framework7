@@ -46,6 +46,10 @@ export class Add {
     }
 
     public save() {
+        if (!this.canSave) {
+            return;
+        }
+
         this.storage.saveTodo(this.todo);
         this.router.navigateToRoute('list');
     }
